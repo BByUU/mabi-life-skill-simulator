@@ -1,0 +1,9 @@
+{
+  "name": "mabi-life-skill-simulator",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "瑪奇生活技能修練模擬器",
+  "scripts": { "dev": "node scripts/serve.mjs", "test": "node --test tests/*.test.mjs", "check": "node --check dist/app.js && node --check dist/calculator.js" },
+  "engines": { "node": ">=20" }
+}

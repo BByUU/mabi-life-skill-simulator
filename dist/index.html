@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#122b29">
+  <meta name="description" content="瑪奇生活技能練技模擬器：調整修練倍率、規劃 Rank 路線，估算修練次數與材料需求。">
+  <title>艾爾琳練習簿｜瑪奇生活技能模擬器</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%23122b29'/%3E%3Cpath d='M20 7 31 20 20 33 9 20Z' fill='none' stroke='%23d4ed9b' stroke-width='3'/%3E%3Cpath d='M20 14v12M14 20h12' stroke='%23d4ed9b' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到模擬器</a>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="艾爾琳練習簿首頁"><span class="brand-mark" aria-hidden="true">◇</span><span>艾爾琳練習簿<small>MABINOGI · LIFE SKILLS</small></span></a>
+    <div class="header-right"><span class="edition">生活技能模擬器</span><a class="source-link" href="https://docs.google.com/spreadsheets/d/1Ax4M2ycAv-XMDUo-DldQVt3cGiYRaz5cCTCONSoH46c/edit?gid=785953580#gid=785953580" target="_blank" rel="noreferrer">原始試算表 <span aria-hidden="true">↗</span></a></div>
+  </header>
+  <div class="workspace">
+    <aside class="skill-sidebar" aria-label="生活技能">
+      <div class="nav-label">修練技能 <span id="skill-count">09</span></div>
+      <nav id="skill-nav" aria-label="選擇技能"><button class="skill-button active" type="button">打鐵</button></nav>
+      <div class="sidebar-bottom"><span class="little-diamond" aria-hidden="true">◇</span><p>每一次練習，<br>都離 Rank 1 更近一點。</p><small id="source-date">資料來源：生活技能修練表</small></div>
+    </aside>
+    <main id="main" tabindex="-1">
+      <div class="page-heading"><div><p class="eyebrow">TRAINING PLANNER</p><h1 id="skill-title">打鐵</h1><p class="heading-description">設定你的修練條件，算好下一步。</p></div><span class="outline-badge">生活修練</span></div>
+      <section class="journey-card" aria-labelledby="journey-title">
+        <div class="section-heading"><h2 id="journey-title">這次想練到哪裡？</h2><button id="reset" type="button" class="text-button">重設設定</button></div>
+        <div class="journey-fields"><label>目前 Rank<select id="start-rank" aria-label="目前 Rank"><option>F</option></select></label><span class="journey-arrow" aria-hidden="true">→</span><label>目標 Rank<select id="target-rank" aria-label="目標 Rank"><option>1</option></select></label><label class="progress-field">目前 Rank 的修練值<div class="input-unit"><input id="current-progress" type="number" min="0" max="100" step="0.1" value="0"><span>/ 100</span></div></label></div>
+        <p class="field-help">目標 Rank 為到達該階級；不包含目標階級本身的修練。</p>
+      </section>
+      <div id="error-message" class="error-message" role="alert" hidden></div>
+      <section id="summary" class="summary-grid" aria-label="模擬結果" aria-live="polite"><article class="stat-card"><span>預估修練操作</span><strong>—<small>次</small></strong><p>依各項修練上限計算</p></article><article class="stat-card"><span>所需材料</span><strong>—<small>種</small></strong><p>依試算表配方估算</p></article><article class="stat-card accent"><span>修練加成</span><strong>1<small>×</small></strong><p>次數倍率 × 經驗值倍率</p></article></section>
+      <section class="plan-section"><div class="section-heading"><div class="tabs" role="tablist" aria-label="模擬結果檢視"><button id="plan-tab" role="tab" aria-selected="true" aria-controls="plan-panel" tabindex="0" class="tab active">修練路線</button><button id="materials-tab" role="tab" aria-selected="false" aria-controls="materials-panel" tabindex="-1" class="tab">材料清單</button></div><span id="route-caption" class="muted"></span></div><div id="plan-panel" role="tabpanel" aria-labelledby="plan-tab"><div class="loading-state">正在整理技能資料…</div></div><div id="materials-panel" role="tabpanel" aria-labelledby="materials-tab" hidden></div></section>
+      <footer class="data-footer"><p>計算依據為原作者試算表。修練成功率、遊戲版本及未列出的配方，可能影響實際需求。</p><details><summary>資料與計算說明</summary><div id="method-notes"></div></details></footer>
+    </main>
+    <aside class="settings-sidebar" aria-labelledby="settings-title"><div class="settings-heading"><p class="eyebrow">YOUR BONUSES</p><h2 id="settings-title">修練加成</h2><p>依角色目前的效果調整。</p><button id="mobile-bonus-toggle" class="mobile-bonus-button" type="button" aria-expanded="false" aria-controls="bonus-controls">調整倍率 ⌄</button></div><div id="bonus-controls"><label class="form-label">次數倍率<input type="number" value="1" disabled></label></div><div class="bonus-total"><span>目前倍率</span><strong id="combined-bonus">1<span>×</span></strong><p id="bonus-breakdown">次數 1× · 經驗值 1×</p></div><div class="note-box"><h3>先確認修練條件</h3><p>「次數」有項目上限，「經驗值」影響每次取得的修練值。兩者分開計算。</p></div></aside>
+  </div>
+</body>
+</html>
