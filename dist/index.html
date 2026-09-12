@@ -8,6 +8,7 @@
   <title>艾爾琳練習簿｜瑪奇生活技能模擬器</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%23122b29'/%3E%3Cpath d='M20 7 31 20 20 33 9 20Z' fill='none' stroke='%23d4ed9b' stroke-width='3'/%3E%3Cpath d='M20 14v12M14 20h12' stroke='%23d4ed9b' stroke-width='2'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./dan.css">
   <script type="module" src="./app.js"></script>
 </head>
 <body>
@@ -23,6 +24,7 @@
       <div class="sidebar-bottom"><span class="little-diamond" aria-hidden="true">◇</span><p>每一次練習，<br>都離 Rank 1 更近一點。</p><small id="source-date">資料來源：生活技能修練表</small></div>
     </aside>
     <main id="main" tabindex="-1">
+      <nav class="mode-nav" aria-label="模擬器分頁"><a href="./" aria-current="page">一般修練</a><a href="./dan.html">升段</a></nav>
       <div class="page-heading"><div><p class="eyebrow">TRAINING PLANNER</p><h1 id="skill-title">打鐵</h1><p class="heading-description">設定你的修練條件，算好下一步。</p><p id="bonus-source" class="field-help"></p></div><span class="outline-badge">生活修練</span></div>
       <section class="journey-card" aria-labelledby="journey-title">
         <div class="section-heading"><h2 id="journey-title">這次想練到哪裡？</h2><button id="reset" type="button" class="text-button">重設設定</button></div>
